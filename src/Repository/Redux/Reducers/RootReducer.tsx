@@ -1,4 +1,4 @@
-import { AsyncGetAllPosts, GetAllPosts, LoadMorePosts } from "../Actions/ActionCreator"
+import data from '../../../Resources/Data.json';
 import { GET_ALL_POSTS, LOAD_MORE_POSTS, ASYNC_GET_ALL_POSTS } from "../ActionTypes/ActionTypes";
 import Post from "../Model/PostsModel";
 
@@ -7,17 +7,19 @@ interface State {
     allPosts: Post[];
 }
 const InitialState : State = {
-    posts: [],
-    allPosts: []
+    posts: data.posts.slice(0,5),
+    allPosts: data.posts
 }
 export function postReducer(state = InitialState, action: any){
     switch(action.type){
         case GET_ALL_POSTS:
-            console.log("get")
-            return state;
+            console.log("Success getted all data", action.payload)
+            return {
+                ...state, posts: action.payload
+            };
         case LOAD_MORE_POSTS:
             console.log("load")
-            return state;
+            return {...state, posts:[...state.posts, ...state.allPosts.slice(state.posts.length, state.posts.length+action.payload)]};
         case ASYNC_GET_ALL_POSTS:
             console.log('async')
             return state;

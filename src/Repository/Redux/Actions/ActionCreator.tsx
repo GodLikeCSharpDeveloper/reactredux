@@ -1,35 +1,30 @@
-import { GET_ALL_POSTS, LOAD_MORE_POSTS, ASYNC_GET_ALL_POSTS } from "../ActionTypes/ActionTypes";
+import { GET_ALL_POSTS, LOAD_MORE_POSTS, ASYNC_GET_ALL_POSTS, PostActions } from "../ActionTypes/ActionTypes";
 import { Dispatch, Action } from 'redux'
-interface GetAllPostsAction extends Action {
-    type: typeof GET_ALL_POSTS;
-}
+import Posts from "../Model/PostsModel";
+import data from '../../../Resources/Data.json'
 
-interface LoadMorePostsAction extends Action {
-    type: typeof LOAD_MORE_POSTS;
-}
-
-interface AsyncGetAllPostsAction extends Action {
-    type: typeof ASYNC_GET_ALL_POSTS;
-}
-
-export function GetAllPosts(): GetAllPostsAction {
+export function GetAllPosts(): PostActions {
     return {
-        type: GET_ALL_POSTS
+        type: GET_ALL_POSTS,
+        payload: data.posts
     };
 }
 
-export function LoadMorePosts(): LoadMorePostsAction {
+export function LoadMorePosts(): PostActions {
     return {
-       type: LOAD_MORE_POSTS
+       type: LOAD_MORE_POSTS,
+       payload: 1
     };
 }
 
 export function AsyncGetAllPosts() {
-    return function(dispatch: Dispatch) {
-        const action: AsyncGetAllPostsAction = {
-            type: ASYNC_GET_ALL_POSTS
-        };
-        dispatch(action);
+    return async (dispatch: Dispatch) => {
+        try {
+          dispatch({ type: GET_ALL_POSTS})
+        } catch (error) {
+          console.error("An error occurred:", error);
+        }
+      };
     }
-}
+
 
