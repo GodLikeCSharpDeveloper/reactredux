@@ -29,7 +29,10 @@ module.exports = {
     })
   ],
   resolve: {
-    extensions: ['.tsx', '.ts', '.js']
+    extensions: ['.tsx', '.ts', '.js'],
+    alias: {
+      '@': path.resolve(__dirname, 'src/'),
+    }
   },
   output: {
     filename: 'bundle.js',
@@ -45,6 +48,7 @@ module.exports = {
     compress: true,
     port: 4000,
     
-  }
+  },
+  
   
 };

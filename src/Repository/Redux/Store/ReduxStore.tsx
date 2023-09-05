@@ -1,7 +1,12 @@
-import {configureStore, applyMiddleware} from '@reduxjs/toolkit'
-import postReducer from '../Reducers/RootReducer'
+import {configureStore} from '@reduxjs/toolkit'
+import {postReducer, likeReducer} from '../Reducers/RootReducer'
 import thunk from 'redux-thunk'
-import {createStore} from 'redux'
 
-export const store = createStore(postReducer, applyMiddleware(thunk));
+
+export const store = configureStore({
+    reducer: {
+      posts: postReducer,
+      likes: likeReducer
+    }, middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
+});
 export default store;

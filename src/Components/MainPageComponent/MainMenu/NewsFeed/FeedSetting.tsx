@@ -1,4 +1,4 @@
-import '../../../../css/NewsFeed.css'
+import '@/css/NewsFeed.css'
 import { AiFillFire} from 'react-icons/ai'
 
 

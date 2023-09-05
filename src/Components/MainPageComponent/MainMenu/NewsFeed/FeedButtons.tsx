@@ -1,4 +1,7 @@
-import '../../../../css/NewsFeed.css'
+import '@/css/NewsFeed.css'
+import '/src/css/NewsFeed.css'
+import {store} from '@/Repository/Redux/Store/ReduxStore' 
+import { GetAllPosts, AsyncGetAllPosts, LoadMorePosts, IncrementLike } from '@/Repository/Redux/Actions/ActionCreator'
 import { BiComment } from 'react-icons/bi'
 import { BsSave } from 'react-icons/bs'
 import { AiOutlineLike } from 'react-icons/ai'
@@ -17,7 +20,7 @@ function FeedButtons({CommentsCount, LikesCount}:Numbers) {
                 <button className='buttonsForFeed'><BsSave></BsSave>&nbsp; save</button>
             </div>
             <div className='col-3'>
-                <button className='buttonsForFeed'><AiOutlineLike className='like' />{LikesCount}</button>
+                <button onClick={()=>store.dispatch(IncrementLike(LikesCount))} className='buttonsForFeed'><AiOutlineLike className='like' />{LikesCount}</button>
             </div>
         </>
     )

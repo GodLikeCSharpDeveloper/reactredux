@@ -1,21 +1,13 @@
-import '../../../../css/NewsFeed.css'
+import '/src/css/NewsFeed.css'
 import FeedSetting from './FeedSetting'
 import FeedButtons from './FeedButtons'
 import FeedLinks from './FeedLinks'
-
-import store from '../../../../Repository/Redux/Store/ReduxStore' 
-import { GetAllPosts, AsyncGetAllPosts, LoadMorePosts } from '../../../../Repository/Redux/Actions/ActionCreator'
-import { useSelector } from 'react-redux'
-interface Posts {
-    nickname: string;
-    date_posted: string;
-    category: string;
-    title: string;
-    likes_count: number;
-    comments_count: number;
-}
+import store from '@/Repository/Redux/Store/ReduxStore' 
+import { GetAllPosts, AsyncGetAllPosts, LoadMorePosts } from '@/Repository/Redux/Actions/ActionCreator'
+import { UseNewsFeed } from '@/Repository/UseNewsFeed'
+import Posts from '@/Repository/Redux/Model/PostsModel'
 function NewsFeed() {
-   const posts = useSelector((state : any)=> state.posts);
+    const { posts, loadingRef, hasMore } = UseNewsFeed(LoadMorePosts());
     return (
         <div className='FeedSettings'>
             <button onClick={()=>store.dispatch(LoadMorePosts())}>load</button>
@@ -29,7 +21,7 @@ function NewsFeed() {
             </div>
             ))}
            
-            <div >Loading...</div>
+           { hasMore ? <div ref={loadingRef}>Loading...</div> : <div>Конец списка</div> }
         </div>
     )
 }

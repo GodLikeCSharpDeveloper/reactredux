@@ -1,4 +1,4 @@
-import "../../../../css/SidePanel.css"
+import "@/css/SidePanel.css"
 
 function SideBtnGroup1() {
     return (

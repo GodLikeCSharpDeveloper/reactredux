@@ -1,4 +1,4 @@
-import "../../../../css/SidePanel.css"
+import "@/css/SidePanel.css"
 import SideBtnGroup1 from "./SideBtnGroup";
 
 function SidePanel() {

@@ -1,7 +1,6 @@
-import { GET_ALL_POSTS, LOAD_MORE_POSTS, ASYNC_GET_ALL_POSTS, PostActions } from "../ActionTypes/ActionTypes";
-import { Dispatch, Action } from 'redux'
-import Posts from "../Model/PostsModel";
-import data from '../../../Resources/Data.json'
+import { GET_ALL_POSTS, LOAD_MORE_POSTS, ASYNC_GET_ALL_POSTS, PostActions, LikeActions, INCREMENT_LIKE } from "../ActionTypes/ActionTypes";
+import { Dispatch } from 'redux'
+import data from '@/Resources/Data.json'
 
 export function GetAllPosts(): PostActions {
     return {
@@ -20,11 +19,16 @@ export function LoadMorePosts(): PostActions {
 export function AsyncGetAllPosts() {
     return async (dispatch: Dispatch) => {
         try {
-          dispatch({ type: GET_ALL_POSTS})
+          setTimeout(()=> dispatch({ type: GET_ALL_POSTS, payload:data.posts}), 2003)
         } catch (error) {
           console.error("An error occurred:", error);
         }
       };
     }
 
-
+export function IncrementLike(LikesCount: Number): LikeActions {
+  return {
+    type: INCREMENT_LIKE,
+    payload: LikesCount
+  }
+}

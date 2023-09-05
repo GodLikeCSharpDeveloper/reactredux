@@ -20,10 +20,11 @@
     "react-router-dom": "^6.15.0",
     "react-scripts": "5.0.1",
     "redux": "^4.2.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "webpack-dev-server": "^4.15.1"
   },
   "scripts": {
-    "start": "node --inspect=0.0.0.0:9229 ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "build": "webpack --config webpack.config.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

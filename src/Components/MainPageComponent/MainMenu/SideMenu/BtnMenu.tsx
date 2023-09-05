@@ -1,4 +1,4 @@
-import "../../css/SidePanel.css"
+import "@/css/SidePanel.css"
 import * as React from 'react';
 type BtnMenuProps = {
     btnClassName: string;

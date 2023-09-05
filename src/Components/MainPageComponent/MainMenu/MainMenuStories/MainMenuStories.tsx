@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../../../../css/MainMenuStories.css'
+import '@/css/MainMenuStories.css'
 import StoryCard from './StoryCard';
 const MainMenuStories = () => {
 
